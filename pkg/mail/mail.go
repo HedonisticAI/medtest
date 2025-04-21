@@ -1,6 +1,7 @@
 package mail
 
 import (
+	"fmt"
 	"medtest/config"
 	"net/smtp"
 )
@@ -16,11 +17,12 @@ type Notify struct {
 }
 
 func NewNotify(Config *config.Config) *Notify {
-	return &Notify{From: Config.Mailer.From, PWD: Config.Mailer.PWD, SMTPhost: Config.Mailer.SMTPhost, SMTPport: Config.Mailer.SMTPport, Type: Config.Mailer.BuildType}
+	return &Notify{From: Config.Mailer.From, PWD: Config.Mailer.PWD, SMTPhost: Config.Mailer.SMTPhost, SMTPport: Config.Mailer.SMTPport, Type: Config.BuildType}
 }
 
 func (Notify *Notify) NewMail(To string) error {
 	if Notify.Type == "Testing" {
+		fmt.Print("Sent email")
 		return nil
 	}
 	var toArr []string

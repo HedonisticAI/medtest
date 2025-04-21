@@ -23,10 +23,6 @@ func (L *Logger) Debug(Msg ...interface{}) {
 	L.ZapLog.Log(zap.DebugLevel, Msg)
 }
 
-func (L *Logger) Error(Msg ...interface{}) {
-	L.ZapLog.Error(Msg)
-}
-
 func (L *Logger) Info(Msg ...interface{}) {
 	L.ZapLog.Info(Msg)
 }

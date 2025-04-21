@@ -9,18 +9,18 @@ import (
 )
 
 type Config struct {
-	DB     DB
-	Cache  Cache
-	Server Server
-	Mailer Mailer
+	DB        DB
+	Cache     Cache
+	Server    Server
+	Mailer    Mailer
+	BuildType string
 }
 
 type Mailer struct {
-	From      string
-	PWD       string
-	SMTPhost  string
-	SMTPport  string
-	BuildType string
+	From     string
+	PWD      string
+	SMTPhost string
+	SMTPport string
 }
 
 type Cache struct {
@@ -59,10 +59,6 @@ func NewCache() *Cache {
 	return &Cache{Duration: Time}
 }
 func NewMail() *Mailer {
-	Type, exist := os.LookupEnv("BUILD_TYPE")
-	if !exist {
-		return nil
-	}
 	SMTPport, exist := os.LookupEnv("SMTP_PORT")
 	if !exist {
 		return nil
@@ -79,7 +75,7 @@ func NewMail() *Mailer {
 	if !exist {
 		return nil
 	}
-	return &Mailer{PWD: Pwd, From: From, SMTPhost: SMTPhost, SMTPport: SMTPport, BuildType: Type}
+	return &Mailer{PWD: Pwd, From: From, SMTPhost: SMTPhost, SMTPport: SMTPport}
 }
 func NewDB() *DB {
 	DBHost, exist := os.LookupEnv("DB_HOST")
@@ -110,6 +106,10 @@ func NewConfig() *Config {
 		log.Print("No .env file found")
 		return nil
 	}
+	Type, exist := os.LookupEnv("BUILD_TYPE")
+	if !exist {
+		return nil
+	}
 	DB := NewDB()
 	if DB == nil {
 		return nil
@@ -127,5 +127,5 @@ func NewConfig() *Config {
 	if Mailer == nil {
 		return nil
 	}
-	return &Config{DB: *DB, Cache: *Cache, Server: *Server, Mailer: *Mailer}
+	return &Config{DB: *DB, Cache: *Cache, Server: *Server, Mailer: *Mailer, BuildType: Type}
 }

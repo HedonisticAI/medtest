@@ -1,9 +1,14 @@
 -- +goose Up
 -- +goose StatementBegin
-SELECT 'up SQL query';
+CREATE TABLE IF NOT EXISTS token
+(
+    id SERIAL PRIMARY KEY,
+    Refresh TEXT,
+    UserID INT
+);
 -- +goose StatementEnd
 
 -- +goose Down
 -- +goose StatementBegin
-SELECT TABLE IF EXISTS token;
+DROP TABLE IF EXISTS token;
 -- +goose StatementEnd

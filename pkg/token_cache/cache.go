@@ -11,6 +11,9 @@ import (
 	"github.com/patrickmn/go-cache"
 )
 
+// when to clean cache from expired tokens
+const DefaultCleanUp = cache.NoExpiration
+
 type TokenCache struct {
 	Cache *cache.Cache
 }
@@ -20,7 +23,7 @@ func NewCache(Config *config.Config) *TokenCache {
 	if Config.Cache.Duration == -1 {
 		exp = cache.NoExpiration
 	}
-	C := cache.New(exp, cache.NoExpiration)
+	C := cache.New(exp, DefaultCleanUp)
 	return &TokenCache{Cache: C}
 }
 
