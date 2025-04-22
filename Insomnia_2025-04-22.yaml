@@ -1,0 +1,99 @@
+type: collection.insomnia.rest/5.0
+name: MedTest
+meta:
+  id: wrk_fb045c0ab3a24b3aa22711c162e14be2
+  created: 1745259930022
+  modified: 1745259930022
+collection:
+  - url: 127.0.0.1:6370/add
+    name: AddUser
+    meta:
+      id: req_548d14144906419d8d5eb43523c82bd0
+      created: 1745259955313
+      modified: 1745263490986
+      isPrivate: false
+      sortKey: -1745259955313
+    method: POST
+    parameters:
+      - id: pair_53a683062e3743ecb938ff116c988ffb
+        name: Mail
+        value: '"Hddd@hhh.com"'
+        disabled: false
+    headers:
+      - name: User-Agent
+        value: insomnia/11.0.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: 127.0.0.1:6370/signIn
+    name: GetTokens
+    meta:
+      id: req_50bbb00adbdb483ebf18386e9b27e122
+      created: 1745263494144
+      modified: 1745272821622
+      isPrivate: false
+      sortKey: -1745263494144
+    method: GET
+    parameters:
+      - id: pair_878999217f414d55ae1f9f3ad61747c5
+        name: GUID
+        value: 0f573478-6429-421a-a3ca-28cf920cd65b
+        disabled: false
+    headers:
+      - name: User-Agent
+        value: insomnia/11.0.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: 127.0.0.1:6370/refresh
+    name: New Request
+    meta:
+      id: req_0dee0dd7c5f14ccf9409bfc57130050d
+      created: 1745273088758
+      modified: 1745276415605
+      isPrivate: false
+      sortKey: -1745273088758
+    method: GET
+    body:
+      mimeType: application/json
+      text: >-
+        {
+        	"Access":"eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiaXAiOiIxMjcuMC4wLjEiLCJtYWlsIjoiXCJIZGRkQGhoaC5jb21cIiJ9.NX_SoNaFSL_6C-4vMsSDkawnI22TfODo6NznzWMsCQrky6wi_6SNqHostZRVv1KMqksPJC_5CgPDmRccdLm8Rw", 
+        	"Refresh" : "T1pLUFBCVFk2RjdSNEJTM0ZGQkZGRjVZRkc"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.0.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_2552074ee04705c5373f13e927c8c51fb7f4c225
+    created: 1745259930028
+    modified: 1745259930028
+environments:
+  name: Base Environment
+  meta:
+    id: env_2552074ee04705c5373f13e927c8c51fb7f4c225
+    created: 1745259930027
+    modified: 1745259930027
+    isPrivate: false
